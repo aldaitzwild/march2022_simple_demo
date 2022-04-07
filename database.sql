@@ -22,6 +22,21 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+CREATE TABLE book (
+	id int primary key auto_increment,
+    title varchar(250),
+    description text,
+    nb_of_pages int,
+    author varchar(250)
+);
+
+INSERT INTO book (title, description, nb_of_pages, author)
+VALUES ('Dune', 'Des gens dans le désert qui aime épicé', 356, 'Franck Herbert'),
+	('1Q84', 'Des gens qui se croisent dans un monde bizarre.', 489, 'Haruki Murakami'),
+	('Les misérables', 'Des gens qui n\'ont globalement pas de bol...', 606, 'Victor Hugo'),
+	('Le seigneur des anneaux', 'Une histoire de bijou qui tourne mal', 543, 'J.R.R Tolkien')
+;
+
 --
 -- Structure de la table `item`
 --
