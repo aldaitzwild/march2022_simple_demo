@@ -15,7 +15,7 @@
         <tbody>
             {% for book in books %}
                 <tr>
-                    <td>{{ book.title }}</td>
+                    <td><a href="/books/details?id={{ book.id }}">{{ book.title }}</a></td>
                     <td>{{ book.nb_of_pages }}</td>
                     <td>{{ book.author }}</td>
                 </tr>

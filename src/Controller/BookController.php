@@ -13,4 +13,12 @@ class BookController extends AbstractController
 
         return $this->twig->render('Book/list.html.twig', ['books' => $books]);
     }
+
+    public function show(int $id): string
+    {
+        $bookManager = new BookManager();
+        $book = $bookManager->selectOneById($id);
+
+        return $this->twig->render('Book/details.html.twig', ['book' => $book]);
+    }
 }

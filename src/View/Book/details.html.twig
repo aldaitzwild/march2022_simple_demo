@@ -1,0 +1,18 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <main class="container">
+        <h1 class="text-center mb-5">{{ book.title }}</h1>
+
+        <h2>Description : </h2>
+        <p>{{ book.description }}</p>
+
+        <hr class="m-5">
+
+        <h2>Details : </h2>
+        <ul>
+            <li>Nombre de pages : {{book.nb_of_pages}}</li>
+            <li>Auteur : {{book.author}}</li>
+        </ul>
+    </main>
+{% endblock %}
