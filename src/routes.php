@@ -15,4 +15,6 @@ return [
     'items/delete' => ['ItemController', 'delete',],
     'books' => ['BookController', 'list',],
     'books/details' => ['BookController', 'show', ['id']],
+    'books/add' => ['BookController', 'add',],
+    'books/bestauthors' => ['BookController', 'listTheBests',],
 ];

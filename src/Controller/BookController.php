@@ -21,4 +21,29 @@ class BookController extends AbstractController
 
         return $this->twig->render('Book/details.html.twig', ['book' => $book]);
     }
+
+    public function add(): ?string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            $book = array_map('trim', $_POST);
+
+            // if validation is ok, insert and redirection
+            $bookManager = new BookManager();
+            $bookManager->insert($book);
+
+            header('Location:/books');
+            return null;
+        }
+
+        return $this->twig->render('Book/add.html.twig');
+    }
+
+    public function listTheBests(): string
+    {
+        $bookManager = new BookManager();
+        $theBestbooks = $bookManager->getTheBests();
+
+        return $this->twig->render('Book/list.html.twig', ['books' => $theBestbooks]);
+    }
 }

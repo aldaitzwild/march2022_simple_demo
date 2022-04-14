@@ -1,0 +1,33 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+    <h1 class="text-center">Ajouter un nouveau livre</h1>
+
+    <form method="POST" class="container">
+        <p>
+            <label class="form-label">Titre : </label>
+            <input class="form-control" name="title">
+        </p>
+
+        <p>
+            <label class="form-label">Description : </label>
+            <textarea class="form-control" name="description"></textarea>
+        </p>
+
+        <p>
+            <label class="form-label">Nombre de pages : </label>
+            <input class="form-control" type="number" name="nb_of_pages">
+        </p>
+
+        <p>
+            <label class="form-label">Auteur : </label>
+            <input class="form-control" name="author">
+        </p>
+
+        <p>
+            <input class="btn btn-primary btn-lg" type="submit" value="Créer">
+        </p>
+    </form>
+
+{% endblock %}
