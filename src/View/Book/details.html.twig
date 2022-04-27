@@ -1,7 +1,7 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    <main class="container">
+    <main class="container" style="background-color:{{ bgcolor }}">
         <h1 class="text-center mb-5">{{ book.title }}</h1>
 
         <h2>Description : </h2>
@@ -14,5 +14,11 @@
             <li>Nombre de pages : {{book.nb_of_pages}}</li>
             <li>Auteur : {{book.author}}</li>
         </ul>
+
+        <form method="POST">
+            <label>Couleur de fond : </label>
+            <input type="color" name="bgColor">
+            <input type="submit" value="changer">
+        </form>
     </main>
 {% endblock %}

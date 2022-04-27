@@ -18,8 +18,20 @@ class BookController extends AbstractController
     {
         $bookManager = new BookManager();
         $book = $bookManager->selectOneById($id);
+        $bgColor = "white";
 
-        return $this->twig->render('Book/details.html.twig', ['book' => $book]);
+        if (isset($_SESSION['color' . $id])) {
+            $bgColor = $_SESSION['color' . $id];
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['bgColor'])) {
+                $bgColor = $_POST['bgColor'];
+                $_SESSION['color' . $id] = $bgColor;
+            }
+        }
+
+        return $this->twig->render('Book/details.html.twig', ['book' => $book, 'bgcolor' => $bgColor]);
     }
 
     public function add(): ?string
@@ -45,5 +57,11 @@ class BookController extends AbstractController
         $theBestbooks = $bookManager->getTheBests();
 
         return $this->twig->render('Book/list.html.twig', ['books' => $theBestbooks]);
+    }
+
+    public function refreshColors(): void
+    {
+        session_destroy();
+        header('Location: /books');
     }
 }

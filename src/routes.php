@@ -17,4 +17,5 @@ return [
     'books/details' => ['BookController', 'show', ['id']],
     'books/add' => ['BookController', 'add',],
     'books/bestauthors' => ['BookController', 'listTheBests',],
+    'refreshColors' => ['BookController', 'refreshColors'],
 ];
