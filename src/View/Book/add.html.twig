@@ -4,25 +4,40 @@
 
     <h1 class="text-center">Ajouter un nouveau livre</h1>
 
+    {% if errors is not empty %}
+        <div>
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
     <form method="POST" class="container">
-        <p>
-            <label class="form-label">Titre : </label>
-            <input class="form-control" name="title">
+        <p class="form-floating">
+            {% if errors.title is defined %}
+                <input class="form-control is-invalid" name="title" id="title" placeholder="">
+                <label for="title">Titre - {{ errors.title }}</label>
+            {% else %}
+                <input class="form-control" name="title" id="title" placeholder="Titre">
+                <label for="title">Titre</label>
+            {% endif %}
         </p>
 
-        <p>
-            <label class="form-label">Description : </label>
-            <textarea class="form-control" name="description"></textarea>
+        <p class="form-floating">
+            <textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
+            <label for="description">Description : </label>
         </p>
 
-        <p>
-            <label class="form-label">Nombre de pages : </label>
-            <input class="form-control" type="number" name="nb_of_pages">
+        <p class="form-floating">
+            <input class="form-control" type="number" name="nb_of_pages" id="nb_of_pages" placeholder="Nombre de pages">
+            <label for="nb_of_pages">Nombre de pages : </label>
         </p>
 
-        <p>
-            <label class="form-label">Auteur : </label>
-            <input class="form-control" name="author">
+        <p class="form-floating">
+            <input class="form-control" name="author" id="author" placeholder="Auteur">
+            <label for="author">Auteur : </label>
         </p>
 
         <p>

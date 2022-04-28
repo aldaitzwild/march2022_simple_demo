@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\BookManager;
+use App\Service\BookService;
 
 class BookController extends AbstractController
 {
@@ -36,19 +37,26 @@ class BookController extends AbstractController
 
     public function add(): ?string
     {
+        $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $book = array_map('trim', $_POST);
 
-            // if validation is ok, insert and redirection
-            $bookManager = new BookManager();
-            $bookManager->insert($book);
+            $bookService = new BookService();
+            $errors = $bookService->checkBookFields($book);
 
-            header('Location:/books');
-            return null;
+
+
+            if (empty($errors)) {
+                $bookManager = new BookManager();
+                $bookManager->insert($book);
+
+                header('Location:/books');
+                return null;
+            }
         }
 
-        return $this->twig->render('Book/add.html.twig');
+        return $this->twig->render('Book/add.html.twig', ['errors' => $errors]);
     }
 
     public function listTheBests(): string
