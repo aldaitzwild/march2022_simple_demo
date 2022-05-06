@@ -1,0 +1,24 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+    <h1 class="text-center">Liste des auteurs</h1>    
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in authors %}
+                <tr>
+                    <td>{{ author.lastname }}</td>
+                    <td>{{ author.firstname }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

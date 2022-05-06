@@ -18,4 +18,5 @@ return [
     'books/add' => ['BookController', 'add',],
     'books/bestauthors' => ['BookController', 'listTheBests',],
     'refreshColors' => ['BookController', 'refreshColors'],
+    'authors' => ['AuthorController', 'showList'],
 ];
